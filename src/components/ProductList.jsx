@@ -59,7 +59,13 @@ const ProductList = ({
                     )}`}
                     textAlign="center"
                   />
-                  <Button
+                  <ListItemText
+                    secondary={`Aprox. ${product.avgWeight}g/ud`}
+                    textAlign="center"
+
+                  />
+                </ListItem>
+                <Button
                     variant="outlined"
                     size="small"
                     onClick={() => onIncrement(index)}
@@ -81,7 +87,6 @@ const ProductList = ({
                       <DeleteIcon />
                     </IconButton>
                   </Button>
-                </ListItem>
               </List>
             </Box>
           </Grid>
