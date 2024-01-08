@@ -57,10 +57,35 @@ const App = () => {
 
   const calculateTotalCost = () => {
     const totalCost = products.reduce((acc, product, index) => {
-      return acc + productQuantities[index] * product.costByGram * product.avgWeight;
+      return (
+        acc + productQuantities[index] * product.costByGram * product.avgWeight
+      );
     }, 0);
     return totalCost.toFixed(2);
   };
+
+  const displayDetail = () => {
+    const detail = products.map((product, index) => {
+      const quantity = productQuantities[index];
+      if (quantity > 0) {
+        return (
+          <Container key={index}>
+            <Typography variant="p" textAlign="left">{`${
+              product.nombre
+            }: ${quantity} und = ${quantity} x ${
+              product.avgWeight * product.costByGram
+            }$ = $${(quantity * product.avgWeight * product.costByGram).toFixed(
+              2
+            )}`}</Typography>
+          </Container>
+        );
+      }
+      return null;
+    });
+
+    return detail;
+  };
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -87,18 +112,27 @@ const App = () => {
             height: "250px",
             boxShadow: 1,
             borderRadius: 8,
+            backgroundColor: "#e65100",
           }}
         >
-          <Typography variant="h3" mt={2}>
+          <Typography variant="h3" mt={2} color="white">
             Product Cost Calculator
+            <Typography variant="body1" mt={2} color="white">
+              {displayDetail()}
+            </Typography>
           </Typography>
-          <Typography variant="body1">Total to pay:</Typography>
-          <InputBase 
+          <Typography variant="body1" color="white" tex>
+            Total to pay:
+          </Typography>
+          <InputBase
             autoComplete="string"
             type="text"
             value={`$${calculateTotalCost()}`}
             readOnly
-            />
+            sx={{
+              color: "white",
+            }}
+          />
         </Container>
       </Grid>
     </Grid>

@@ -8,9 +8,9 @@ import {
   Button,
 } from "@mui/material";
 
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import PropTypes from "prop-types";
 
@@ -62,31 +62,27 @@ const ProductList = ({
                   <ListItemText
                     secondary={`Aprox. ${product.avgWeight}g/ud`}
                     textAlign="center"
-
                   />
                 </ListItem>
                 <Button
-                    variant="outlined"
-                    size="small"
-                    onClick={() => onIncrement(index)}
-                  >
-                    <IconButton
-                      color="primary"
-                      aria-label="add to shopping cart"
-                    >
-                      <AddShoppingCartIcon />
-                    </IconButton>
-                  </Button>
-                  <span>{productQuantities[index]}</span>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    onClick={() => onDecrement(index)}
-                  >
-                    <IconButton aria-label="delete">
-                      <DeleteIcon />
-                    </IconButton>
-                  </Button>
+                  variant="outlined"
+                  size="small"
+                  onClick={() => onIncrement(index)}
+                >
+                  <IconButton color="primary" aria-label="add to shopping cart">
+                    <AddShoppingCartIcon />
+                  </IconButton>
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => onDecrement(index)}
+                >
+                  <IconButton aria-label="delete" color="primary">
+                    <DeleteIcon />
+                  </IconButton>
+                </Button>
+                <Box><span>{productQuantities[index]}</span></Box>
               </List>
             </Box>
           </Grid>
